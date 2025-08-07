@@ -1,0 +1,114 @@
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #9fb4c7, #00feed);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+/* Glassy Form Container */
+form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  width: 320px;
+  text-align: center;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Header */
+h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Input Fields */
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background: rgba(243, 242, 242, 0.367);
+  color: #212a54;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: #5f8caa;
+}
+
+input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Button */
+button {
+  width: 100%;
+  background: #ffffff;
+  color: #1f64a1;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(209, 204, 204, 0.2);
+}
+
+button:hover {
+  background: #047ca4;
+  transform: scale(1.03);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Paragraph and Links */
+p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #0f0101;
+}
+
+a {
+  color: #4382d3c9;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #d8e0e5;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  form {
+    width: 90%;
+    padding: 30px;
+  }
+}

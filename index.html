@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Authentication</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .login-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    
+    .gif-container {
+      flex: 1;
+      max-width: 500px;
+      text-align: center;
+    }
+    
+    .gif-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    
+    .form-container {
+      flex: 1;
+      max-width: 400px;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .gif-container {
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="gif-container">
+      <img src="https://assets-v2.lottiefiles.com/a/9966e956-1173-11ee-b7ca-4b431ac39d93/mxZfQa6hsH.gif" alt="Login Animation">
+    </div>
+    
+    <div class="form-container">
+      <form id="loginForm">
+        <h2>User Authentication <br>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit">Login</button>
+        
+        <!-- Add this inside your index.html -->
+        <button type="button" onclick="redirectToAdmin()">Go to Admin Page</button>
+
+        <script>
+        function redirectToAdmin() {
+          const email = prompt("Enter admin email:");
+          const password = prompt("Enter password:");
+
+          if (email === "admin@gmail.com" && password === "12345") {
+            sessionStorage.setItem("loggedInUser", "admin@gmail.com");
+            window.location.href = "admin.html";
+          } else {
+            alert("Access denied! Invalid credentials.");
+          }
+        }
+        </script>
+
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+      </form>
+      
+      <!-- Admin Panel button: only visible if user is admin -->
+      <button id="adminBtn" style="display: none;" onclick="window.location.href='admin.html'">Admin Panel</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+
+  <script>
+    window.onload = function () {
+      const currentUser = sessionStorage.getItem("loggedInUser");
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.email === currentUser);
+      if ((user && user.isAdmin) || currentUser === "admin@gmail.com") {
+        document.getElementById("adminBtn").style.display = "inline-block";
+      }
+    };
+  </script>
+</body>
+</html>
